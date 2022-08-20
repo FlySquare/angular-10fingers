@@ -1,0 +1,72 @@
+.content{
+  .main{
+    .card{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .words{
+      p{
+        flex: 14%;
+        margin-right: 5px;
+        font-size: 25px;
+        font-weight: 500;
+        width: 10px;
+      }
+      display: flex;
+      flex-direction: row;
+
+      flex-wrap: wrap;
+      border-radius: 15px;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      align-content: center;
+      background-color: white;
+    }
+    margin-top: 20px;
+  }
+  .header{
+    .left{
+      p{
+        margin-top: 20px;
+        margin-left: 20px;
+      }
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+    .right{
+      .fa-github{
+        color: #3c3a3a;
+      }
+      .fa-instagram{
+        color: #e1306c;
+      }
+      .fa-twitter{
+        color: #1da1f2;
+      }
+      .fa-linkedin{
+        color: #0077b5;
+      }
+      width: 140px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    border-radius: 15px;
+    background-color: #ffffff;
+    align-items: center;
+    justify-content: space-around;
+  }
+}
