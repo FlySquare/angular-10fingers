@@ -1,4 +1,9 @@
-# Angular10fingers
+
+
+# Angular10fingers Game
+
+### You can test from this url: [Click For Test](https://iamumut.com/angular-10fingers-game/)
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
 
