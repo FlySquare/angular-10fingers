@@ -13,10 +13,23 @@
   </div>
   <div class="main">
     <div class="words">
-      <p *ngFor="let word of words">{{word}}</p>
+      <span [style.transform]="'translateX('+transformPx+'px)'">
+        <div *ngFor="let word of words">
+          <p [style.color]="word.status === false ? 'green' : (word.status === null ? 'red' : '')">{{word.name}}</p>
+        </div>
+      </span>
     </div>
     <div class="card">
-
+      <div class="textArea">
+        <input #input autofocus [disabled]="transformPx === 0" [(ngModel)]="type" (keydown.space)="false" (keyup)="inputChange($event)"
+               type="text">
+        <div class="buttons">
+          <h3 class="wrong">Wrong Count: <span>{{wrongCount}}</span></h3>
+          <button style="background-color: #30bd30" *ngIf="transformPx === 0" (click)="startGame()">Start Game</button>
+          <button style="background-color: #bd3030" *ngIf="transformPx !== 0" (click)="finishGame()">Finish Game</button>
+          <h3 class="success">Success Count: <span>{{currentCount - wrongCount}}</span></h3>
+        </div>
+      </div>
     </div>
   </div>
   <div class="footer">

@@ -1,6 +1,58 @@
 .content{
   .main{
     .card{
+      .textArea{
+        .buttons{
+          .wrong{
+            span{
+              color:black;
+            }
+            color: #ff0000;
+          }
+          .success{
+            span{
+              color:black;
+            }
+            color: #41d117;
+          }
+          button{
+            margin-top: 15px;
+            width: 20%;
+            height: 40px;
+            border-radius: 15px;
+            border: #ccc solid 1px;
+            background: #30bd30;
+            color: white;
+            font-size: 20px;
+            font-weight: 500;
+          }
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          width: 100%;
+          align-items: center;
+          justify-content: space-evenly;
+        }
+        input{
+          width: 50%;
+          height: 40px;
+          border: 1px solid #ccc;
+          border-radius: 15px;
+          font-weight: 500;
+          font-size: 20px;
+          text-align: center;
+        }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: nowrap;
+        width: 100%;
+        height: 150px;
+        background-color: white;
+        border-radius: 15px;
+      }
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -9,17 +61,32 @@
       margin-top: 20px;
     }
     .words{
-      p{
-        flex: 14%;
-        margin-right: 5px;
-        font-size: 25px;
-        font-weight: 500;
-        width: 10px;
+      span{
+        div{
+          p{
+            font-size: 25px;
+            margin-right: 20px;
+            font-weight: 500;
+            white-space: pre;
+            width: 100%;
+            overflow: auto;
+          }
+          text-align: -webkit-center;
+          width: 100%;
+        }
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        width: 100%;
+        position: relative;
+        justify-content: center;
+        left: 47126px;
       }
       display: flex;
       flex-direction: row;
-
-      flex-wrap: wrap;
+      max-height: 360px;
+      flex-wrap: nowrap;
       border-radius: 15px;
       align-items: center;
       justify-content: center;
