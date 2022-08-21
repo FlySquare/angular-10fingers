@@ -26,13 +26,32 @@
         <div class="buttons">
           <h3 class="wrong">Wrong Count: <span>{{wrongCount}}</span></h3>
           <button style="background-color: #30bd30" *ngIf="transformPx === 0" (click)="startGame()">Start Game</button>
-          <button style="background-color: #bd3030" *ngIf="transformPx !== 0" (click)="finishGame()">Finish Game</button>
+          <button style="background-color: #bd3030" *ngIf="transformPx !== 0" (click)="finishGame()">Finish Game - Time: {{time}}</button>
           <h3 class="success">Success Count: <span>{{currentCount - wrongCount}}</span></h3>
         </div>
       </div>
     </div>
   </div>
-  <div class="footer">
-
+  <div class="leaderboard">
+    <h1>Leader Board</h1>
+    <p>If you want to join the leaderboard, you should the enter your username!</p>
+    <input [disabled]="transformPx !== 0" [(ngModel)]="username" placeholder="Enter Username" (keydown.space)="false" (keydown)="keyPressAlphaNumeric($event);" (keyup)="inputChange($event)"
+           type="text">
+    <div class="user">
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Time</th>
+          <th>Success Count</th>
+        </tr>
+        <tr *ngFor="let user of leaderboard;let i = index">
+          <td>#{{i+1}}</td>
+          <td>{{user.username}}</td>
+          <td>{{user.time * 1000 | date:'mm:ss'}}</td>
+          <td>{{user.success_count}}</td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>

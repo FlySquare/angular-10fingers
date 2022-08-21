@@ -1,4 +1,6 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Users} from "./models/users";
+import {LeaderboardService} from "./services/leaderboard.service";
 
 @Component({
   selector: 'app-root',
@@ -15,7 +17,12 @@ export class AppComponent implements OnInit {
   setInterval: any; //SetInterval Function For Global Spaces
   setIntervalChangeSpeed: any; //SetInterval Function For Global Spaces
   timeout: number = 30; // SetInterval Speed
+  leaderboard: Users[];
+  username = '';
+  time: number = 0;
+  timeInterval: any;
 
+constructor(private leaderboardService: LeaderboardService) { }
 
   startGame() {
     this.setInterval = setInterval(() => {
@@ -26,6 +33,13 @@ export class AppComponent implements OnInit {
     this.setIntervalChangeSpeed = setInterval(()=>{
       this.changeSpeed();
     }, 2000);
+
+    if(this.time === 0){
+      this.timeInterval = setInterval(()=>{
+        this.time++;
+        console.log(this.time);
+      }, 1000);
+    }
   }
 
   changeSpeed() {
@@ -38,7 +52,12 @@ export class AppComponent implements OnInit {
   }
 
   finishGame() {
+    clearInterval(this.timeInterval);
+    if (this.username !== '') {
+      this.leaderboardService.addUser(this.username, this.time,this.currentCount - this.wrongCount);
+    }
     this.type = '';
+    this.username = '';
     this.currentCount = 0;
     clearInterval(this.setInterval);
     clearInterval(this.setIntervalChangeSpeed);
@@ -48,6 +67,20 @@ export class AppComponent implements OnInit {
     this.transformPx = 0;
     this.wrongCount = 0;
     this.timeout = 30;
+  }
+
+  keyPressAlphaNumeric(event: any) {
+    const inp = String.fromCharCode(event.keyCode);
+    if (/[a-zA-Z0-9]/.test(inp)) {
+      return true;
+    } else {
+      if(event.code === 'Backspace'){
+        return true;
+      }else{
+        event.preventDefault();
+        return false;
+      }
+    }
   }
 
   inputChange(event: any) {
@@ -76,6 +109,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.leaderboardService.getLeaderboard().subscribe((data) => {
+      this.leaderboard = data;
+    });
     this.words.push({name: 'loss', status: true}); // true- yazılmamış | false- yazılmış | null- hatalı
     this.words.push({name: 'charge', status: true});
     this.words.push({name: 'trouble', status: true});
